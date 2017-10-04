@@ -1,0 +1,13 @@
+* {
+    padding: 0;
+    margin: 0;
+  }
+body {
+  
+
+}
+.drum_piece {
+  display: inline-block;
+  background: gray;
+  border: 5px solid black;
+}
