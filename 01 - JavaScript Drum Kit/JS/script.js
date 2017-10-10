@@ -13,8 +13,43 @@ function playAudio(event) {
     var tink = new Audio('sounds/tink.wav');
     var tom = new Audio('sounds/tom.wav');
 
-    event.target.getElementById
-    .play();
+    animation () {
+        document.getElementById(event.target.id).classList.toggle('play');
+
+    }
+
+    console.log(event.target.id);   
+    switch (event.target.id) {
+        case 'boom':
+            boom.play();
+            
+            break;
+        case 'clap':
+            clap.play();
+            break;
+        case 'hihat':
+            hihat.play();
+            break;
+        case 'kick':
+            kick.play();
+            break;
+        case 'openhat':
+            openhat.play();
+            break;
+        case 'ride':
+            ride.play();
+            break;
+        case 'snare':
+            snare.play();
+            break;
+        case 'tink':
+            tink.play();
+            break;
+        case 'tom':
+            tom.play();
+            break;   
+
+    }      
 }
 
 var drumkit = document.getElementById("drumkit").addEventListener('click', playAudio, false);
