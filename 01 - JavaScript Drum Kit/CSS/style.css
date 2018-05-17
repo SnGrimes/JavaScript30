@@ -33,7 +33,22 @@ h1 {
 .drum_piece:hover {
   cursor: pointer;
 }
+@keyframes anim {
+  0% {
+    box-shadow: none;
+    transform: none;
+  }
+  50% {
+    box-shadow: 0 0 1rem gold;
+    transform: scale(1);
+  }
+  100% {
+    box-shadow: none;
+    transform: none;
+  }
+
+}
 .play {
-  box-shadow: 0 0 1rem gold;
-  transform:  scale(1);
+  animation-name: anim;
+  animation-duration: 2s;
 }

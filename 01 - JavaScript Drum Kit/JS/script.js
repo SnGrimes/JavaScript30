@@ -13,8 +13,12 @@ function playAudio(event) {
     var tink = new Audio('sounds/tink.wav');
     var tom = new Audio('sounds/tom.wav');
 
-    animation () {
-        document.getElementById(event.target.id).classList.toggle('play');
+    function animation () {
+        let sound = document.getElementById(event.target.id);
+        sound.classList.toggle('play');
+        setTimeout(() => {
+            sound.classList.remove('play');
+        }, 2000);
 
     }
 
@@ -22,7 +26,7 @@ function playAudio(event) {
     switch (event.target.id) {
         case 'boom':
             boom.play();
-            
+            animation();        
             break;
         case 'clap':
             clap.play();
