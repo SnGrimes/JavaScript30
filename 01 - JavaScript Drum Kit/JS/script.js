@@ -1,71 +1,72 @@
 'use strict'
 
-
-
-// function playAudio(event) {
-//     var boom = new Audio('sounds/boom.wav');
-//     var clap = new Audio('sounds/clap.wav');
-//     var hihat = new Audio('sounds/hihat.wav');
-//     var kick = new Audio('sounds/kick.wav');
-//     var openhat = new Audio('sounds/openhat.wav');
-//     var ride = new Audio('sounds/ride.wav');
-//     var snare = new Audio('sounds/snare.wav');
-//     var tink = new Audio('sounds/tink.wav');
-//     var tom = new Audio('sounds/tom.wav');
-
-//     function animation () {
-//         let sound = document.getElementById(event.target.id);
-//         sound.classList.toggle('play');
-//         setTimeout(() => {
-//             sound.classList.remove('play');
-//         }, 2000);
-
-//     }
-
-//     console.log(event.target.id);   
-//     switch (event.target.id) {
-//         case 'boom':
-//             boom.play();
-//             animation();        
-//             break;
-//         case 'clap':
-//             clap.play();
-//             break;
-//         case 'hihat':
-//             hihat.play();
-//             break;
-//         case 'kick':
-//             kick.play();
-//             break;
-//         case 'openhat':
-//             openhat.play();
-//             break;
-//         case 'ride':
-//             ride.play();
-//             break;
-//         case 'snare':
-//             snare.play();
-//             break;
-//         case 'tink':
-//             tink.play();
-//             break;
-//         case 'tom':
-//             tom.play();
-//             break;   
-
-//     }      
-// }
-
-//var drumkit = document.getElementById("drumkit").addEventListener('click', playAudio, false);
 const ride = document.getElementById("ride");
-const cymbal = document.getElementById("ride_cymbal").addEventListener('click', function() {
+const boom = document.getElementById("boom");
+const kick = document.getElementById("kick");
+const snare = document.getElementById("snare");
+const hihat = document.getElementById("hihat");
+const tom = document.getElementById("tom");
+
+const rideCymbal = document.getElementById("ride_cymbal").addEventListener('click', function() {
+    ride.currentTime = 0;
     ride.play();
 }, false);
+const leftTom = document.getElementById("Left_Tom").addEventListener('click', function() {
+    tom.currentTime = 0;
+    tom.play();
+}, false);
+const rightTom = document.getElementById("Right_Tom").addEventListener('click', function() {
+    tom.currentTime = 0;
+    tom.play();
+}, false);
+const floorTom = document.getElementById("floor_tom").addEventListener('click', function() {
+    boom.currentTime = 0;
+    boom.play();
+}, false);
+const kickDrum = document.getElementById("kick_drum").addEventListener('click', function() {
+    kick.currentTime = 0;
+    kick.play();
+}, false);
+const snareDrum = document.getElementById("snare_drum").addEventListener('click', function() {
+    snare.currentTime = 0;
+    snare.play();
+}, false);
+const hihatCymbal = document.getElementById("hihat_cymbal").addEventListener('click', function() {
+    hihat.currentTime = 0;
+    hihat.play();
+}, false);
+const test = document.getElementById("ride_cymbal");
 document.addEventListener('keydown', (event) => {
+    console.log(`The key pressed was ${event.key}`);
     switch (event.key) {
-        case '65':
-        ride.play();
-        break;
+        case 'a':
+            ride.currentTime = 0;
+            ride.play();
+            TweenLite.to(test, 3, {rotate: 45});
+            break;
+        case 's': 
+            boom.currentTime = 0;
+            boom.play();
+            break; 
+        case 'd':
+            kick.currentTime = 0;
+            kick.play();
+            break;
+        case 'f':
+            snare.currentTime = 0;
+            snare.play();
+            break;
+        case 'j':
+            hihat.currentTime = 0;
+            hihat.play();
+            break;
+        case 'k':
+        case 'l':
+            tom.currentTime = 0;
+            tom.play();
+            break;
+        default:
+            console.log("No valid key pressed.");
     }
 });
 
