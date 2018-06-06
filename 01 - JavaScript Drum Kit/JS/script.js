@@ -7,42 +7,63 @@ const snare = document.getElementById("snare");
 const hihat = document.getElementById("hihat");
 const tom = document.getElementById("tom");
 
-const rideCymbal = document.getElementById("ride_cymbal").addEventListener('click', function() {
+const rideCymbal = document.getElementById("ride_cymbal");
+const rightTom = document.getElementById("Right_Tom");
+const leftTom = document.getElementById("Left_Tom");
+const floorTom = document.getElementById("floor_tom");
+const kickDrum = document.getElementById("kick_drum");
+const snareDrum = document.getElementById("snare_drum");
+const hihatCymbal = document.getElementById("hihat_cymbal");
+
+
+
+const ride_tl = new TimelineMax({paused: true});
+const leftTom_tl = new TimelineMax({paused:true});
+
+
+ride_tl.to(rideCymbal, 0.1, {rotation: 10, transformOrigin: "center center"})
+        .to(rideCymbal, 2, {rotation: 0, transformOrigin:"center center", ease: Elastic.easeOut.config(2, 0.3)});
+
+rideCymbal.addEventListener('click', function() {
     ride.currentTime = 0;
     ride.play();
+    ride_tl.restart();
+    ride_tl.play();
 }, false);
-const leftTom = document.getElementById("Left_Tom").addEventListener('click', function() {
+leftTom.addEventListener('click', function() {
     tom.currentTime = 0;
     tom.play();
 }, false);
-const rightTom = document.getElementById("Right_Tom").addEventListener('click', function() {
+rightTom.addEventListener('click', function() {
     tom.currentTime = 0;
     tom.play();
 }, false);
-const floorTom = document.getElementById("floor_tom").addEventListener('click', function() {
+floorTom.addEventListener('click', function() {
     boom.currentTime = 0;
     boom.play();
 }, false);
-const kickDrum = document.getElementById("kick_drum").addEventListener('click', function() {
+kickDrum.addEventListener('click', function() {
     kick.currentTime = 0;
     kick.play();
 }, false);
-const snareDrum = document.getElementById("snare_drum").addEventListener('click', function() {
+snareDrum.addEventListener('click', function() {
     snare.currentTime = 0;
     snare.play();
 }, false);
-const hihatCymbal = document.getElementById("hihat_cymbal").addEventListener('click', function() {
+hihatCymbal.addEventListener('click', function() {
     hihat.currentTime = 0;
     hihat.play();
 }, false);
-const test = document.getElementById("ride_cymbal");
+
+
 document.addEventListener('keydown', (event) => {
     console.log(`The key pressed was ${event.key}`);
     switch (event.key) {
         case 'a':
             ride.currentTime = 0;
             ride.play();
-            TweenLite.to(test, 3, {rotate: 45});
+            ride_tl.restart();
+            ride_tl.play();
             break;
         case 's': 
             boom.currentTime = 0;
