@@ -41,7 +41,17 @@ rightTom_tl.to(rightTom, 0.1, {scaleX: 1.01, transformOrigin: "center center", e
            .to(rightTom, 0.4, {scale: 1, transformOrigin: "center center", ease: Elastic.easeOut})
            .to(rightTom_all, 0.7, {rotation: 0, transformOrigin: "left center", ease: Elastic.easeOut.config(1, 0.2)}, "-=0.4");
 
-
+floorTom_tl.to(floorTom, 0.1, {scaleX: 1.01, transformOrigin:"bottom center", ease: Expo.easeOut})
+           .to(floorTom, 0.1, {scaleY: .95, transformOrigin:"bottom center", ease: Expo.easeOut}, '0')
+           .to(floorTom, 0.4, {scale: 1, transformOrigin: "bottom center", ease: Elastic.easeOut.config(1, 0.3)});
+kickDrum_tl.to(kickDrum, 0.1, {scaleX: .96, transformOrigin:"center center", ease: Expo.easeOut})
+           .to(kickDrum, 0.1, {scaleY: .96, transformOrigin:"center center", ease: Expo.easeOut}, '0')
+           .to(kickDrum, 0.3, {scale: 1, transformOrigin:"center center", ease: Elastic.easeOut});
+snareDrum_tl.to(snareDrum, 0.1, {scaleX: .98, transformOrigin:"bottom center", ease: Expo.easeOut})
+            .to(snareDrum, 0.1, {scaleY: .90, transformOrigin:"bottom center", ease: Expo.easeOut}, '0')
+            .to(snareDrum, 0.3, {scale: 1, transformOrigin:"bottom center", ease: Elastic.easeOut.config(.9, .8)});
+hihatCymbal_tl.to(hihatCymbal, 0.1, {rotation: 3, transformOrigin: "center center"})
+              .to(hihatCymbal, 1, {rotation:0, transformOrigin: "center center", ease:Elastic.easeOut.config(2, 0.5)});
 /** 
  * Drum Element button click functionality
 */            
@@ -66,23 +76,30 @@ rightTom.addEventListener('click', function() {
 floorTom.addEventListener('click', function() {
     boom.currentTime = 0;
     boom.play();
+    floorTom_tl.restart();
+    floorTom_tl.play();
 }, false);
 kickDrum.addEventListener('click', function() {
     kick.currentTime = 0;
     kick.play();
+    kickDrum_tl.restart();
+    kickDrum_tl.play();
 }, false);
 snareDrum.addEventListener('click', function() {
     snare.currentTime = 0;
     snare.play();
+    snareDrum_tl.restart();
+    snareDrum_tl.play();
 }, false);
 hihatCymbal.addEventListener('click', function() {
     hihat.currentTime = 0;
     hihat.play();
+    hihatCymbal_tl.restart();
+    hihatCymbal_tl.play();
 }, false);
 
 
 document.addEventListener('keydown', (event) => {
-    console.log(`The key pressed was ${event.key}`);
     switch (event.key) {
         case 'a':
             ride.currentTime = 0;
@@ -93,18 +110,26 @@ document.addEventListener('keydown', (event) => {
         case 's': 
             boom.currentTime = 0;
             boom.play();
+            floorTom_tl.restart();
+            floorTom_tl.play();
             break; 
         case 'd':
             kick.currentTime = 0;
             kick.play();
+            kickDrum_tl.restart();
+            kickDrum_tl.play();
             break;
         case 'f':
             snare.currentTime = 0;
             snare.play();
+            snareDrum_tl.restart();
+            snareDrum_tl.play();
             break;
         case 'j':
             hihat.currentTime = 0;
             hihat.play();
+            hihatCymbal_tl.restart();
+            hihatCymbal_tl.play();
             break;
         case 'k':
             tom.currentTime = 0;
